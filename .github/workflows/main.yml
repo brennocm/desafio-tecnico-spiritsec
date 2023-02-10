@@ -1,0 +1,19 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Run Dependabot
+      uses: dependabot/actions/dependabot-core@v1
+      with:
+        repo-token: ${{ secrets.SECRET_DEPENDABOT }}
